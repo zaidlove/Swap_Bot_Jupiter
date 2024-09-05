@@ -27,10 +27,6 @@ import {
     QuoteResponseFromJSON,
     QuoteResponseToJSON,
     SwapInstructionsResponseFromJSON,
-    SwapInstructionsResponseToJSON,
-    SwapRequestFromJSON,
-    SwapRequestToJSON,
-    SwapResponseFromJSON,
     SwapResponseToJSON,
 } from '../models/index';
 
@@ -100,10 +96,6 @@ export class DefaultApi extends runtime.BaseAPI {
      * GET /indexed-route-map
      * @deprecated
      */
-    async indexedRouteMapGet(requestParameters: IndexedRouteMapGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<IndexedRouteMapResponse> {
-        const response = await this.indexedRouteMapGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
 
     /**
      * Returns a hash, which key is the program id and value is the label. This is used to help map error from transaction by identifying the fault program id. With that, we can use the `excludeDexes` or `dexes` parameter.
@@ -113,13 +105,6 @@ export class DefaultApi extends runtime.BaseAPI {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/program-id-to-label`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
 
         return new runtime.JSONApiResponse<any>(response);
     }
@@ -170,10 +155,6 @@ export class DefaultApi extends runtime.BaseAPI {
 
         if (requestParameters.autoSlippage !== undefined) {
             queryParameters['autoSlippage'] = requestParameters.autoSlippage;
-        }
-
-        if (requestParameters.autoSlippageCollisionUsdValue !== undefined) {
-            queryParameters['autoSlippageCollisionUsdValue'] = requestParameters.autoSlippageCollisionUsdValue;
         }
 
         if (requestParameters.computeAutoSlippage !== undefined) {
