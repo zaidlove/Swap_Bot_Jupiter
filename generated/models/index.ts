@@ -2,7 +2,7 @@
 /* eslint-disable */
 export * from './AccountMeta';
 export * from './IndexedRouteMapResponse';
-export * from './Instruction';
+// export * from './Instruction';
 export * from './PlatformFee';
 export * from './QuoteResponse';
 export * from './RoutePlanStep';

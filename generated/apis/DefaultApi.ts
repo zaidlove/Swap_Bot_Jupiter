@@ -271,10 +271,10 @@ export class DefaultApi extends runtime.BaseAPI {
      * Returns instructions that you can use from the quote you get from `/quote`.
      * POST /swap-instructions
      */
-    async swapInstructionsPost(requestParameters: SwapInstructionsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SwapInstructionsResponse> {
-        const response = await this.swapInstructionsPostRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
+    // async swapInstructionsPost(requestParameters: SwapInstructionsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SwapInstructionsResponse> {
+    //     const response = await this.swapInstructionsPostRaw(requestParameters, initOverrides);
+    //     return await response.value();
+    // }
 
     /**
      * Returns a transaction that you can use from the quote you get from `/quote`.
