@@ -36,13 +36,7 @@ export interface IndexedRouteMapResponse {
 /**
  * Check if a given object implements the IndexedRouteMapResponse interface.
  */
-export function instanceOfIndexedRouteMapResponse(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "mintKeys" in value;
-    isInstance = isInstance && "indexedRouteMap" in value;
 
-    return isInstance;
-}
 
 export function IndexedRouteMapResponseFromJSON(json: any): IndexedRouteMapResponse {
     return IndexedRouteMapResponseFromJSONTyped(json, false);

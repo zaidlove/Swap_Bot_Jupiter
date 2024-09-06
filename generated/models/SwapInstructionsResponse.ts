@@ -37,12 +37,7 @@ export interface SwapInstructionsResponse {
      * @type {Array<Instruction>}
      * @memberof SwapInstructionsResponse
      */
-    computeBudgetInstructions: Array<Instruction>;
-    /**
-     * Setup missing ATA for the users.
-     * @type {Array<Instruction>}
-     * @memberof SwapInstructionsResponse
-     */
+    
     setupInstructions: Array<Instruction>;
     /**
      * 

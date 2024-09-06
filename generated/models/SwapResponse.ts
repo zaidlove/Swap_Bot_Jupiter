@@ -42,13 +42,6 @@ export interface SwapResponse {
 /**
  * Check if a given object implements the SwapResponse interface.
  */
-export function instanceOfSwapResponse(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "swapTransaction" in value;
-    isInstance = isInstance && "lastValidBlockHeight" in value;
-
-    return isInstance;
-}
 
 export function SwapResponseFromJSON(json: any): SwapResponse {
     return SwapResponseFromJSONTyped(json, false);
