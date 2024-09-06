@@ -43,21 +43,20 @@ export interface SwapResponse {
  * Check if a given object implements the SwapResponse interface.
  */
 
-export function SwapResponseFromJSON(json: any): SwapResponse {
-    return SwapResponseFromJSONTyped(json, false);
-}
+// export function SwapResponseFromJSON(json: any): SwapResponse {
+//     return SwapResponseFromJSONTyped(json, false);
+// }
 
-export function SwapResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): SwapResponse {
-    if ((json === undefined) || (json === null)) {
-        return json;
-    }
-    return {
+// export function SwapResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): SwapResponse {
+//     if ((json === undefined) || (json === null)) {
+//         return json;
+//     }
+//     return {
         
-        'swapTransaction': json['swapTransaction'],
-        'lastValidBlockHeight': json['lastValidBlockHeight'],
-        'prioritizationFeeLamports': !exists(json, 'prioritizationFeeLamports') ? undefined : json['prioritizationFeeLamports'],
-    };
-}
+//         'lastValidBlockHeight': json['lastValidBlockHeight'],
+//         'prioritizationFeeLamports': !exists(json, 'prioritizationFeeLamports') ? undefined : json['prioritizationFeeLamports'],
+//     };
+// }
 
 export function SwapResponseToJSON(value?: SwapResponse | null): any {
     if (value === undefined) {

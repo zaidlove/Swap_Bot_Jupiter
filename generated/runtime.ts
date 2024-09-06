@@ -84,7 +84,6 @@ export class Configuration {
     }
 }
 
-export const DefaultConfig = new Configuration();
 
 /**
  * This is the base class for all generated API classes.
@@ -92,22 +91,19 @@ export const DefaultConfig = new Configuration();
 export class BaseAPI {
 
     private static readonly jsonRegex = new RegExp('^(:?application\/json|[^;/ \t]+\/[^;/ \t]+[+]json)[ \t]*(:?;.*)?$', 'i');
-    private middleware: Middleware[];
+    // private middleware: Middleware[];
 
-    constructor(protected configuration = DefaultConfig) {
-        this.middleware = configuration.middleware;
-    }
+    // constructor(protected configuration = DefaultConfig) {
+    //     this.middleware = configuration.middleware;
+    // }
 
-    withMiddleware<T extends BaseAPI>(this: T, ...middlewares: Middleware[]) {
-        const next = this.clone<T>();
-        next.middleware = next.middleware.concat(...middlewares);
-        return next;
-    }
+    // withMiddleware<T extends BaseAPI>(this: T, ...middlewares: Middleware[]) {
+    //     const next = this.clone<T>();
+    //     next.middleware = next.middleware.concat(...middlewares);
+    //     return next;
+    // }
 
-    withPreMiddleware<T extends BaseAPI>(this: T, ...preMiddlewares: Array<Middleware['pre']>) {
-        const middlewares = preMiddlewares.map((pre) => ({ pre }));
-        return this.withMiddleware<T>(...middlewares);
-    }
+    
 
     withPostMiddleware<T extends BaseAPI>(this: T, ...postMiddlewares: Array<Middleware['post']>) {
         const middlewares = postMiddlewares.map((post) => ({ post }));
@@ -131,14 +127,14 @@ export class BaseAPI {
         return BaseAPI.jsonRegex.test(mime);
     }
 
-    protected async request(context: RequestOpts, initOverrides?: RequestInit | InitOverrideFunction): Promise<Response> {
-        const { url, init } = await this.createFetchParams(context, initOverrides);
-        const response = await this.fetchApi(url, init);
-        if (response && (response.status >= 200 && response.status < 300)) {
-            return response;
-        }
-        throw new ResponseError(response, 'Response returned an error code');
-    }
+    // protected async request(context: RequestOpts, initOverrides?: RequestInit | InitOverrideFunction): Promise<Response> {
+    //     const { url, init } = await this.createFetchParams(context, initOverrides);
+    //     const response = await this.fetchApi(url, init);
+    //     if (response && (response.status >= 200 && response.status < 300)) {
+    //         return response;
+    //     }
+    //     throw new ResponseError(response, 'Response returned an error code');
+    // }
 
     private async createFetchParams(context: RequestOpts, initOverrides?: RequestInit | InitOverrideFunction) {
         let url = this.configuration.basePath + context.path;
